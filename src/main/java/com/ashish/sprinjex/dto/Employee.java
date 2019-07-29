@@ -5,6 +5,10 @@ public class Employee {
     String fname;
     String lname;
 
+    public Employee() {
+
+    }
+
     public Employee(int id, String fname, String lname) {
         this.id = id;
         this.fname = fname;

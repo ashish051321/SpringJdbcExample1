@@ -1,15 +1,20 @@
 package com.ashish.sprinjex.dao;
 
+import com.ashish.springjex.mappers.EmployeeRowMapper;
 import com.ashish.sprinjex.dto.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class EmpDaoImpl implements EmpDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    private EmployeeRowMapper employeeRowMapper;
 
     @Override
     public void createTable() {
@@ -26,5 +31,11 @@ public class EmpDaoImpl implements EmpDao {
         int result = jdbcTemplate.update(insertSql, emp.getId(), emp.getFname(), emp.getLname());
         System.out.println(result + " records inserted");
         return result;
+    }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        List<Employee> emplist = jdbcTemplate.query("select * from employee", new EmployeeRowMapper());
+        return emplist;
     }
 }

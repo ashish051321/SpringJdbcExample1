@@ -1,7 +1,6 @@
 package com.ashish.sprinjex.start;
 
 import com.ashish.sprinjex.dao.EmpDao;
-import com.ashish.sprinjex.dto.Employee;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,8 +9,11 @@ public class TestMe {
         System.out.println("Hello People !");
         ApplicationContext ct = new ClassPathXmlApplicationContext("springconfig.xml");
         EmpDao empDao = (EmpDao) ct.getBean("empDaoImpl");
-        empDao.addEmployee(new Employee(1, "Ashish", "Mishra"));
-        empDao.addEmployee(new Employee(2, "Charan", "Singh"));
-        empDao.addEmployee(new Employee(3, "Pranjal", "Kashyap"));
+        // Insert Operations
+//        empDao.addEmployee(new Employee(1, "Ashish", "Mishra"));
+//        empDao.addEmployee(new Employee(2, "Charan", "Singh"));
+//        empDao.addEmployee(new Employee(3, "Pranjal", "Kashyap"));
+        //Select Operations
+        System.out.println(empDao.getAllEmployees());
     }
 }
